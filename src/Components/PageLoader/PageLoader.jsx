@@ -23,7 +23,7 @@ const PageLoader = ({ setHideLoader }) => {
         <div className="pgl">
             <div className="pgl_con">
                 <h3>TECH FEST 2024</h3>
-                <h2>ANOKHYA 2.0 </h2>
+                <h2>ANOKHYA 3.0 </h2>
                 <p>WHERE TECH MEETS UNFORESEEN</p>
 
             </div>

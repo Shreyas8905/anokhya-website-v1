@@ -44,7 +44,7 @@ export default function Homee() {
       >
         <div className="body" id="Home">
 {/*            <div>
-                <Alert_mssg message="🎉 Big News! Scuzo (Popsicle) is gifting cashback vouchers to the runners-up of Anokhya 2.0! 🏆💸" duration={8000} />
+                <Alert_mssg message="🎉 Big News! Scuzo (Popsicle) is gifting cashback vouchers to the runners-up of Anokhya 3.0! 🏆💸" duration={8000} />
             </div> */}
           <div className="home_m">
             
