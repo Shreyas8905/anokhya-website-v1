@@ -2,7 +2,7 @@ import requests
 import json
 
 # API URL (your local Flask server)
-API_URL = "http://127.0.0.1:8080/register"
+API_URL = "https://anokhya-website-backend.vercel.app/registration"
 
 # Sample registration data
 data = {
