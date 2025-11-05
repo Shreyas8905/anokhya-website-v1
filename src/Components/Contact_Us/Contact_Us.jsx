@@ -23,14 +23,12 @@ const Contact_Us = () => {
       return;
     }
 
-    emailjs
-      .sendForm(
-        "service_5ohgqd6",
-        "template_lpc4ndg",
-        form.current,
-        "voSouhkJTg4HjwapQ"
-      )
-      .then(
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      form.current,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    ).then(
         (result) => {
           toast.success("Message Sent Successfully !");
           console.log("message sent");
@@ -38,10 +36,15 @@ const Contact_Us = () => {
           setTimeout(() => {
             setSubmitDisabled(false);
           }, 300000);
+          Setfname("");
+          Setlname("");
+          Setemail("");
+          Setquery("");
+          form.current.reset();
         },
         (error) => {
           toast.error("Error Sending The Message");
-          console.log("error sending the message");
+          console.log("error sending the message",error);
           setSubmitDisabled(true);
           setTimeout(() => {
             setSubmitDisabled(false);
