@@ -60,11 +60,7 @@ const eventData = {
 const colleges = [
   "DSATM",
   "DSCE",
-  "RVCE",
-  "DSU",
-  "PES",
-  "BMSCE",
-  "Others"
+  "DSU"
 ];
 
 const RegistrationForm = ({ eventId = 1 }) => {

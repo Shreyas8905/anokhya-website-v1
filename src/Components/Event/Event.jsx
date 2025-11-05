@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./Event.css";
 import event_data from "../../Assets/Data/Events_data.json";
-import RegistrationForm from "../Reg/Registration.jsx";
+import RegistrationForm from "../Reg/Registration";
 import VanillaTilt from "vanilla-tilt";
 
 function Tilt(props) {
