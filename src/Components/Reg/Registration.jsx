@@ -45,21 +45,22 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Event data
+// Event data with minimum and maximum team sizes
 const eventData = {
-  1: { name: "Accuracy is all you need", maxTeam: 2 },
-  2: { name: "Simply Automation", maxTeam: 2 },
-  3: { name: "Figma Clash", maxTeam: 3 },
-  4: { name: "RADIANT CLASH: VALORANT SHOWDOWN", maxTeam: 5 },
-  5: { name: "AirCrash – The Ultimate Roleplay Showdown", maxTeam: 1 },
-  6: { name: "Free Fire", maxTeam: 4 },
-  7: { name: "Treasure Hunt", maxTeam: 4 },
+  1: { name: "Accuracy is all you need", minTeam: 1, maxTeam: 2 },
+  2: { name: "Simply Automation", minTeam: 1, maxTeam: 2 },
+  3: { name: "Figma Clash", minTeam: 1, maxTeam: 3 },
+  4: { name: "RADIANT CLASH: VALORANT SHOWDOWN", minTeam: 5, maxTeam: 5 },
+  5: { name: "AirCrash – The Ultimate Roleplay Showdown", minTeam: 1, maxTeam: 1 },
+  6: { name: "Free Fire", minTeam: 4, maxTeam: 4 },
+  7: { name: "Treasure Hunt", minTeam: 2, maxTeam: 4 },
 };
 
 const colleges = [
   "DSATM",
   "DSCE",
-  "DSU"
+  "DSU",
+  "Others"
 ];
 
 const RegistrationForm = ({ eventId = 1 }) => {
@@ -67,6 +68,7 @@ const RegistrationForm = ({ eventId = 1 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [teamName, setTeamName] = useState('');
   const [members, setMembers] = useState([]);
+  const [memberCount, setMemberCount] = useState(event.minTeam);
   const [sameCollege, setSameCollege] = useState(false);
   const [selectedCollege, setSelectedCollege] = useState('');
   const [otherCollege, setOtherCollege] = useState('');
@@ -75,7 +77,7 @@ const RegistrationForm = ({ eventId = 1 }) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const initialMembers = Array.from({ length: event.maxTeam }, (_, i) => ({
+    const initialMembers = Array.from({ length: memberCount }, (_, i) => ({
       name: '',
       phone: '',
       email: i < 2 ? '' : null,
@@ -83,7 +85,7 @@ const RegistrationForm = ({ eventId = 1 }) => {
       otherCollege: ''
     }));
     setMembers(initialMembers);
-  }, [event.maxTeam]);
+  }, [memberCount]);
 
   useEffect(() => {
     if (isOpen) {
@@ -160,7 +162,8 @@ const RegistrationForm = ({ eventId = 1 }) => {
             : (m.college === 'Others' ? m.otherCollege : m.college)
         }))
       };
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL 
+      
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
       const response = await fetch(`${API_BASE_URL}/register`, {
         method: 'POST',
         headers: {
@@ -180,7 +183,8 @@ const RegistrationForm = ({ eventId = 1 }) => {
         setSuccess(false);
         setIsOpen(false);
         setTeamName('');
-        setMembers(Array.from({ length: event.maxTeam }, (_, i) => ({
+        setMemberCount(event.minTeam);
+        setMembers(Array.from({ length: event.minTeam }, (_, i) => ({
           name: '',
           phone: '',
           email: i < 2 ? '' : null,
@@ -241,23 +245,20 @@ const RegistrationForm = ({ eventId = 1 }) => {
               <div className="p-8 space-y-6">
                 {/* Header */}
                 <div className="w-full relative flex justify-center">
+                  {/* Center Title */}
+                  <div className="text-center space-y-2">
+                    <h2 className="text-4xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-400 bg-clip-text text-transparent">
+                      ANOKHYA 3.0
+                    </h2>
 
+                    {/* Left-side Event Name */}
+                    <p className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl md:text-3xl font-semibold text-orange-400 tracking-wide">
+                      {event.name}
+                    </p>
 
-  {/* Center Title */}
-  <div className="text-center space-y-2">
-    <h2 className="text-4xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-yellow-400 bg-clip-text text-transparent">
-      ANOKHYA 3.0
-    </h2>
-
-      {/* Left-side Event Name */}
-  <p className="absolute left-4 top-1/2 -translate-y-1/2 text-2xl md:text-3xl font-semibold text-orange-400 tracking-wide">
-    {event.name}
-  </p>
-
-    <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
-  </div>
-</div>
-
+                    <div className="h-px w-32 mx-auto bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
+                  </div>
+                </div>
 
                 {/* Team Name */}
                 <div className="space-y-2">
@@ -273,6 +274,25 @@ const RegistrationForm = ({ eventId = 1 }) => {
                     placeholder="Enter your team name"
                   />
                 </div>
+
+                {/* Number of Members Selector */}
+                {event.minTeam !== event.maxTeam && (
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-2 text-orange-200 text-sm font-medium">
+                      <Users className="w-4 h-4 text-orange-400" />
+                      Number of Team Members
+                    </label>
+                    <select
+                      value={memberCount}
+                      onChange={(e) => setMemberCount(Number(e.target.value))}
+                      className="w-full px-4 py-3 bg-black/40 backdrop-blur-md border border-orange-500/30 rounded-xl text-white focus:outline-none focus:border-orange-500/60 focus:ring-1 focus:ring-orange-500/30 transition-all"
+                    >
+                      {Array.from({ length: event.maxTeam - event.minTeam + 1 }, (_, i) => event.minTeam + i).map(num => (
+                        <option key={num} value={num} className="bg-black">{num} Member{num > 1 ? 's' : ''}</option>
+                      ))}
+                    </select>
+                  </div>
+                )}
 
                 {/* Same College */}
                 <label className="flex items-center gap-3 p-4 bg-black/40 backdrop-blur-md border border-orange-500/20 rounded-xl cursor-pointer hover:bg-black/50 hover:border-orange-500/40 transition-all">
@@ -320,7 +340,7 @@ const RegistrationForm = ({ eventId = 1 }) => {
                 <div className="space-y-4">
                   <h3 className="text-lg font-semibold text-orange-100 flex items-center gap-2">
                     <User className="w-5 h-5 text-orange-400" />
-                    Team Members ({event.maxTeam})
+                    Team Members ({memberCount}{event.minTeam !== event.maxTeam ? ` of ${event.minTeam}-${event.maxTeam}` : ''})
                   </h3>
 
                   {members.map((member, index) => (
