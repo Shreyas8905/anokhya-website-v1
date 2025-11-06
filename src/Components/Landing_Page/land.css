@@ -50,11 +50,19 @@
 
 
 
-.home_m_logo img {
-  height: 10vw;
-  position: absolute;
-  left: 1%;
+.home_m_logo {
+  display: flex;        /* Enables flex layout */
+  gap: 10px;            /* Adds space between images */
+  align-items: center;  /* Centers images vertically */
+  justify-content: center; /* Optional: centers the whole group */
+  position: relative;   /* If you still need positioning context */
   top: 1%;
+  left: 1%;
+}
+
+.home_m_logo img {
+  width: 100px;
+  height: auto; /* Keeps aspect ratio */
 }
 
 .home_m_banner {
