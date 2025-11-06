@@ -98,7 +98,7 @@ export default function Homee() {
               <img src={banner2} alt="banner" />
             </div>
             <div className="home_m_buttons">
-              <a href="/anokhya3.pdf">BROCHURE</a>
+              <a href="/Anokhya-3.O-brochure.pdf">BROCHURE</a>
               <a href="#Events">EVENTS</a>
               <a href="#Timeline">TIMELINE</a>
             </div>
