@@ -3,9 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-.mt-20{
-  margin-top: 50px;
-}
+
 .body {
   z-index: -1;
   width: 100vw;
@@ -16,7 +14,6 @@
 
 .navbar, .header {
   display: none;
-  margin-top:10px;
 }
 
 .home_m {
@@ -36,6 +33,7 @@
   top: 2%;
   right: 2%;
   text-align: right;
+  padding-top: 22px;
 }
 
 .home_m_top_left h3 {
@@ -66,18 +64,6 @@
 .home_m_logo img {
   width: 100px;
   height: auto; /* Keeps aspect ratio */
-}
-
-/* Desktop and large screens */
-@media (min-width: 1024px) {
-  .home_m_logo img {
-    height: 200px;
-    position: absolute;
-    left: 70%;
-    top: 5%;
-    transform: translateX(-50%);
-    z-index: 10;
-  }
 }
 
 .home_m_banner {

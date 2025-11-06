@@ -45,12 +45,18 @@ const navImages = [
       {/* Header with Navbar - Outside AuroraBackground */}
       <header className="relative w-full bg-black/80 backdrop-blur-md shadow-lg border-b border-orange-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4 space-x-40">
+            <div className="flex justify-center items-center gap-6">
+                <div className="home_m_logo">
+                  <img src={logo} alt="Logo" />
+                  <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5 }}
+                  className="w-20 h-20 overflow-hidden border-2 shadow-lg border border-solid border-gray-500 border-opacity-0 br-transparant"
                 >
                    <img 
                     src={navImages[currentIndex]}
@@ -64,8 +70,8 @@ const navImages = [
             </div>
 
             {/* Navigation Buttons */}
-            {/* <div className="flex space-x-4">
-              <button
+            <div className="flex space-x-4">
+              {/* <button
                 onClick={() => setCurrentView('register')}
                 className="px-6 py-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-black rounded-full hover:from-orange-600 hover:to-yellow-600 transition-colors font-medium shadow-lg hover:shadow-orange-500/25"
               >
@@ -76,8 +82,13 @@ const navImages = [
                 className="px-6 py-2 border border-orange-500 text-orange-400 rounded-full hover:bg-orange-500/10 transition-colors font-medium"
               >
                 About
-              </button>
-            </div> */}
+              </button> */}
+            <div className="home_m_top_left">
+              <h3>TECH FEST 2025</h3>
+              <p>EVENTS WORKSHOPS TECH-TALKS</p>
+              <p style={{ color: "orange" }}>21st - 22nd NOV 2025</p>
+            </div>
+            </div>
           </div>
         </div>
       </header>
@@ -134,11 +145,6 @@ const navImages = [
             </AnimatePresence>
            
             {/* Rest of your component content */}
-            <div className="home_m_top_left">
-              <h3>TECH FEST 2025</h3>
-              <p>EVENTS WORKSHOPS TECH-TALKS</p>
-              <p style={{ color: "orange" }}>21st - 22nd NOV 2025</p>
-            </div>
             {/* <div className="home_m_logo">
               <img src={logo} alt="Logo" />
             </div> */}
@@ -180,7 +186,7 @@ const navImages = [
                 </a>
               </div>
               <div>
-                <a href="mailto:aiml-dsce@dayanandasagar.edu">
+                <a href="mailto:techfest@anokhya.com">
                   <i
                     className="fa-solid fa-envelope"
                     style={{ color: "#ffffff" }}
