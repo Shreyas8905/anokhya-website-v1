@@ -17,11 +17,11 @@ import Alert_mssg from '../../Components/Alert_mssg/Alert_mssg';
 export default function Homee() {
   // Placeholder images for navbar carousel - replace with your actual image URLs
 const navImages = [
-    logo, 
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=400&h=300&fit=crop",
+    iiclogo, 
+    iqac, 
+    acm, 
+    anvaya, 
+    czl1
   ];
 
 
@@ -49,11 +49,19 @@ const navImages = [
             <div className="flex justify-center items-center gap-6">
                 <div className="home_m_logo">
                   <img src={logo} alt="Logo" />
-                  <img src={iiclogo} alt="Logo" />
-                  <img src={iqac} alt="Logo" />
-                  <img src={acm} alt="Logo" />
-                  <img src={anvaya} alt="Logo" />
-                  <img src={czl1} alt="Logo" />
+                  <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-20 h-20 overflow-hidden border-2 shadow-lg border border-solid border-gray-500 border-opacity-0 br-transparant"
+                >
+
+
+                </motion.div>
+              </AnimatePresence>
                 </div>
             </div>
 
