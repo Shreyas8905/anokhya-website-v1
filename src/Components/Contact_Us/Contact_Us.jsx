@@ -36,7 +36,7 @@ const Contact_Us = () => {
               </a>
             </li>
             <li>
-              <a href="mailto:techfest@anokhya.com" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:aiml-dsce@dayanandasagar.edu" target="_blank" rel="noopener noreferrer">
                 <i className="fa-solid fa-envelope"></i>
               </a>
             </li>
