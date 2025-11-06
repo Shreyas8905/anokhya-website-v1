@@ -7,11 +7,17 @@ import previous from "../../Assets/LPMV/Anokhya2.png";
 import banner2 from "../../Assets/LPMV/banner.png";
 import banner1 from "../../Assets/Events/final.mp4";
 import { AuroraBackground } from "../ui/background";
+import acm from "../../Assets/logos/acm.png";
+import anvaya from "../../Assets/logos/anvaya.png";
+import czl1 from "../../Assets/logos/czl1.png";
+import iiclogo from "../../Assets/logos/iiclogo.png";
+import iqac from "../../Assets/logos/iqac.png";
 import Alert_mssg from '../../Components/Alert_mssg/Alert_mssg';
 
 export default function Homee() {
   // Placeholder images for navbar carousel - replace with your actual image URLs
 const navImages = [
+    logo, 
     "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=300&fit=crop",
     "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&h=300&fit=crop",
     "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop",
@@ -39,25 +45,16 @@ const navImages = [
       {/* Header with Navbar - Outside AuroraBackground */}
       <header className="relative w-full bg-black/80 backdrop-blur-md shadow-lg border-b border-orange-500/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo Carousel Section */}
+          <div className="flex justify-between items-center py-4 space-x-40">
             <div className="flex justify-center items-center gap-6">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.5 }}
-                  className="w-12 h-12 rounded-full overflow-hidden border-2 border-orange-500 shadow-lg"
-                >
-                  <img
-                    src={navImages[currentIndex]}
-                    alt={`Logo ${currentIndex + 1}`}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              </AnimatePresence>
+                <div className="home_m_logo">
+                  <img src={logo} alt="Logo" />
+                  <img src={iiclogo} alt="Logo" />
+                  <img src={iqac} alt="Logo" />
+                  <img src={acm} alt="Logo" />
+                  <img src={anvaya} alt="Logo" />
+                  <img src={czl1} alt="Logo" />
+                </div>
             </div>
 
             {/* Navigation Buttons */}
@@ -136,9 +133,9 @@ const navImages = [
               <p>EVENTS WORKSHOPS TECH-TALKS</p>
               <p style={{ color: "orange" }}>21st - 22nd NOV 2025</p>
             </div>
-            <div className="home_m_logo">
+            {/* <div className="home_m_logo">
               <img src={logo} alt="Logo" />
-            </div>
+            </div> */}
             <div className="home_m_banner">
               <img src={banner} alt="Banner" />
             </div>
